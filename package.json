@@ -1,0 +1,34 @@
+{
+  "name": "@whuanle/fsmore-skill",
+  "version": "0.1.0",
+  "description": "fsmore（飞书本地 AI 工作台）Agent Skill：教 AI 在哪找文件、读哪些文件、怎么编辑回写飞书文档",
+  "keywords": [
+    "fsmore",
+    "feishu",
+    "lark",
+    "skill",
+    "ai",
+    "mcp"
+  ],
+  "license": "MIT",
+  "author": "whuanle",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whuanle/fsmoreskill.git"
+  },
+  "type": "module",
+  "bin": {
+    "fsmore-skill": "bin/fsmore-skill.js"
+  },
+  "files": [
+    "bin",
+    "SKILL.md",
+    "references"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
