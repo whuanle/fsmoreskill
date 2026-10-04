@@ -10,7 +10,7 @@ fsmore 把飞书知识库 / 云空间文档同步为本机 Markdown 文件，并
 1. **MCP 工具**（推荐）：`search_docs` / `read_doc` / `sync_doc` / `push_doc` 等，完整清单见 [references/mcp-tools.md](references/mcp-tools.md)。
 2. **直接读写本地文件**：所有文档都是工作区下的 .md 文件，用普通文件工具读写即可；但**回写飞书必须走 MCP 的 `push_doc`**，直接改文件不会同步到远端。
 
-MCP 连不上说明服务没启动：提醒用户运行 `fsmore`（或 `npx @whuanle/fsmore`），Web 控制台在 `http://127.0.0.1:7788`。首次安装授权见 [references/setup.md](references/setup.md)。
+MCP 连不上说明服务没启动：提醒用户运行 `fsmore`（未安装则先 `npm install -g @whuanle/fsmore`，或直接 `npx @whuanle/fsmore`），Web 控制台在 `http://127.0.0.1:7788`。首次安装授权见 [references/setup.md](references/setup.md)。
 
 ## 1. 在哪里找到文件
 
