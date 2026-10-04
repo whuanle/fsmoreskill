@@ -6,7 +6,13 @@
 
 ## 安装技能
 
-把本仓库的 `SKILL.md` 与 `references/` 复制到技能目录下的 `fsmore/`：
+一条命令安装（[skills CLI](https://github.com/vercel-labs/skills)，支持 Claude Code、Codex、Cursor 等 18+ Agent）：
+
+```bash
+npx skills add whuanle/fsmoreskill
+```
+
+或手动复制：
 
 ```bash
 git clone https://github.com/whuanle/fsmoreskill.git
