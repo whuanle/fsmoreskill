@@ -10,7 +10,15 @@ fsmore 把飞书知识库 / 云空间文档同步为本机 Markdown 文件，并
 1. **MCP 工具**（推荐）：`search_docs` / `read_doc` / `sync_doc` / `push_doc` 等，完整清单见 [references/mcp-tools.md](references/mcp-tools.md)。
 2. **直接读写本地文件**：所有文档都是工作区下的 .md 文件，用普通文件工具读写即可；但**回写飞书必须走 MCP 的 `push_doc`**，直接改文件不会同步到远端。
 
-MCP 连不上说明服务没启动：提醒用户运行 `fsmore`（未安装则先 `npm install -g @whuanle/fsmore`，或直接 `npx @whuanle/fsmore`），Web 控制台在 `http://127.0.0.1:7788`。首次安装授权见 [references/setup.md](references/setup.md)。
+## 0. 安装并启动 fsmore
+
+MCP 连不上 / 端口不通时，按以下步骤处理：
+
+1. **安装**（需 Node ≥ 20）：`fsmore` 命令不存在时先执行 `npm install -g @whuanle/fsmore`；免安装试用可 `npx @whuanle/fsmore`。
+2. **启动**：`fsmore` 无参数，前台常驻服务，默认端口 7788——在工具里以后台任务方式启动，不要挂在当前会话。看到输出 `Web 控制台: http://127.0.0.1:7788` 即启动成功；`Ctrl+C` 停止。
+3. **验证**：请求 `http://127.0.0.1:7788` 有响应即可用；MCP 端点是 `http://127.0.0.1:7788/mcp`。
+4. **端口被占**（EADDRINUSE）：改用 `FSMORE_PORT=<新端口>` 启动，注意 MCP 端点与飞书回调地址都跟着变。
+5. **首次使用**：控制台提示「尚未配置飞书应用凭证」时，需要用户到 Web 控制台「设置」页填 App ID / App Secret 并扫码授权（完整步骤见 [references/setup.md](references/setup.md)）。未授权前同步与回写不可用，本地已同步的文档仍可正常读。
 
 ## 1. 在哪里找到文件
 
