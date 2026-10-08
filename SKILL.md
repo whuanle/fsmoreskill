@@ -7,7 +7,7 @@ description: 使用 fsmore（飞书本地 AI 工作台）查找、读取、编�
 
 fsmore 把飞书知识库 / 云空间文档同步为本机 Markdown 文件，并通过 MCP 服务（`http://127.0.0.1:7788/mcp`，Streamable HTTP）暴露给 AI。你有两种等价的工作方式：
 
-1. **MCP 工具**（推荐）：`search_docs` / `read_doc` / `sync_doc` / `push_doc` 等，完整清单见 [references/mcp-tools.md](references/mcp-tools.md)。
+1. **MCP 工具**（推荐）：`search_online`（云端搜索并自动拉取）/ `get_tree`（目录树）/ `resolve_docs`（批量定位）/ `create_doc`（新建文档）/ `search_docs` / `read_doc` / `sync_doc` / `push_doc` 等，完整清单见 [references/mcp-tools.md](references/mcp-tools.md)。
 2. **直接读写本地文件**：所有文档都是工作区下的 .md 文件，用普通文件工具读写即可；但**回写飞书必须走 MCP 的 `push_doc`**，直接改文件不会同步到远端。
 
 ## 0. 安装并启动 fsmore
@@ -33,7 +33,10 @@ MCP 连不上 / 端口不通时，按以下步骤处理：
 
 定位文档：
 
-- 按内容关键词找 → `search_docs`（全文搜索，返回得分排序与摘要片段）
+- 目标文档可能还没同步 / 只知道主题 → `search_online`（飞书云端搜索，默认自动拉取命中结果到本地并返回路径）
+- 浏览层级结构 / 找某个目录下的文档 → `get_tree`（目录树：全部文档源 / 指定文档源 / 指定 token 位置展开）
+- 已知一批 token 或标题要拿本地路径 → `resolve_docs`（批量解析，只查本地不发网络）
+- 按内容关键词找已同步文档 → `search_docs`（全文搜索，返回得分排序与摘要片段）
 - 按标题 / 路径找 → `list_docs`（可用 `space` 过滤某个文档源）
 - 看有哪些文档源 → `list_spaces`
 - 元信息（原文链接、版本、资源清单、同步错误）→ `get_doc_meta`
@@ -48,6 +51,8 @@ MCP 连不上 / 端口不通时，按以下步骤处理：
 ## 3. 怎么编辑文件
 
 本地 .md 是**工作副本**，飞书远端是**权威源**：所有修改写本地文件，改完用 `push_doc` 回写；不要绕过它直接调飞书 API。
+
+新建文档：`create_doc`（标题 + 可选父位置 token）→ 拿到本地 md 路径后直接写入内容 → `push_doc` 回写（新文档没有冲突问题）。
 
 编辑规则（违反会导致回写失败或损坏文档结构）：
 
@@ -93,5 +98,5 @@ workspace_root: {工作区绝对路径}
 
 ## 参考
 
-- [references/mcp-tools.md](references/mcp-tools.md)：11 个 MCP 工具的完整参数、返回结构与接入配置
+- [references/mcp-tools.md](references/mcp-tools.md)：16 个 MCP 工具的完整参数、返回结构与接入配置
 - [references/setup.md](references/setup.md)：安装、扫码授权、环境变量、常见问题

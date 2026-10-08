@@ -23,7 +23,9 @@ npx @whuanle/fsmore               # 免安装试用
    | `docx:document` | 读取与编辑文档 |
    | `docx:document.block:convert` | Markdown 与文档块互转 |
    | `wiki:wiki:readonly` | 读取知识库 |
+   | `wiki:wiki` | 在知识库节点下新建文档（`create_doc` 用） |
    | `drive:drive:readonly` | 读取云空间与图片附件 |
+   | `search:docs:read` | 在线搜索云文档（`search_online` 用） |
    | `board:whiteboard:node:read` | 读取画板 |
    | `board:whiteboard:node:create` | 画板回写 |
 
